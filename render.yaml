@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: naver-webtoon-bot
+    env: node
+    buildCommand: npm install && chmod +x src/rusty-smart-stitch
+    startCommand: node index.js
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GOOGLE_CREDENTIALS
+        sync: false
+      - key: GOOGLE_TOKEN
+        sync: false
+      - key: GOOGLE_DRIVE_FOLDER_ID
+        sync: false
