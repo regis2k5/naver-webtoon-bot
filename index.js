@@ -5,6 +5,16 @@ const GoogleDriveUploader = require('./src/drive');
 const ImageStitcher = require('./src/stitcher');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
+
+// Simple HTTP server to keep Render free tier happy
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Bot is running!');
+}).listen(PORT, () => {
+    console.log(`HTTP server running on port ${PORT}`);
+});
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds]
